@@ -1,0 +1,71 @@
+#spring:
+#  application:
+#    name: test
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/testdb
+#    username: postgres
+#    password: 122333
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+server:
+  port: 8080
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+spring:
+  application:
+    name: online-shop-telegram-bot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/testdb
+    username: postgres
+    password: 122333
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        enable_lazy_load_no_trans: true
+        format_sql: true
+        show_sql: true
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  mvc:
+    async:
+      request-timeout: 600000
+springdoc:
+  override-with-generic-response: false
+  swagger-ui:
+    path: /swagger
+    config-url: /v3/api-docs
+    disable-swagger-default-url: true
+app:
+  timezone: Asia/Tashkent
+brevo:
+  api:
+    key: ${BREVO_API_KEY:}
+
+verified:
+  email:
+    time:
+      milli:
+        second: 120000
+jwt:
+  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+  expiration:
+    ms: 3600000000000
+  refresh:
+    expiration:
+      ms: 3600000000000
+target:
+  customer:
+    telegram-channel: https://t.me/oson_market_uzb
+    instagram: https://instagram.com/osonmarket_official
